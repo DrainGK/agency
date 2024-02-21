@@ -4,6 +4,7 @@ import React from 'react'
 import { motion, useViewportScroll, useScroll } from "framer-motion";
 import { Dispatch, SetStateAction, useState, useEffect } from "react";
 import { FiMenu, FiArrowRight } from "react-icons/fi"
+import BookButton from './BookButton';
 
 function Navbar() {
   const [showNav, setShowNav] = useState(true);
@@ -73,6 +74,7 @@ export default Navbar
         <NavLink text="Project" />
         <NavLink text="Services" />
         <NavLink text="Contact" />
+        <BookButton />
       </div>
     );
   };

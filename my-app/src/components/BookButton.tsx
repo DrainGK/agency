@@ -20,7 +20,7 @@ const BookButton = () => {
         hover:before:translate-y-[0%]
         active:scale-95`}
     >
-      <span>Book Consultation</span>
+      <span>+ Become a client</span>
     </button>
   )
 };
