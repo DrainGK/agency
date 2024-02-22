@@ -44,7 +44,7 @@ function Navbar() {
       ${isBeyondThreshold ? "bg-[#364044]" : "bg-transparent"} z-10`}>
         <div className="w-[100vw] md:w-[78vw] p-6 flex items-center justify-between mx-auto">
             <div className="text-2xl hover:text-[#FFA41B] cursor-pointer">
-                Guillaume Dev
+                <a href="/">Guillaume Dev</a>
             </div>
             <NavLeft setIsOpen={setIsOpen} />
             <NavMenu isOpen={isOpen} />
@@ -70,10 +70,10 @@ export default Navbar
         >
           <FiMenu />
         </motion.button>
-        <NavLink text="Home" />
-        <NavLink text="Project" />
-        <NavLink text="Services" />
-        <NavLink text="Contact" />
+        <NavLink text="home" />
+        <NavLink text="projects" />
+        <NavLink text="services" />
+        <NavLink text="contact" />
         <BookButton />
       </div>
     );
@@ -82,7 +82,7 @@ export default Navbar
   const NavLink = ({ text }: { text: string }) => {
     return (
       <a
-        href="#"
+        href={`#${text}`}
         rel="nofollow"
         className="hidden lg:block h-[30px] overflow-hidden font-medium"
       >
@@ -104,10 +104,10 @@ export default Navbar
         animate={isOpen ? "open" : "closed"}
         className="absolute p-4 shadow-lg left-0 right-0 top-full origin-top flex flex-col gap-4 bg-[#404C51]"
       >
-        <MenuLink text="Home" />
-        <MenuLink text="Project" />
-        <MenuLink text="Services" />
-        <MenuLink text="Contact" />
+        <MenuLink text="home" />
+        <MenuLink text="projects" />
+        <MenuLink text="services" />
+        <MenuLink text="contact" />
       </motion.div>
     );
   };

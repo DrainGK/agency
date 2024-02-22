@@ -7,6 +7,8 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import MovingText from '@/components/MovingText'
 import { useRef } from 'react'
 import { InView } from 'react-intersection-observer';
+import BookButton from '@/components/BookButton'
+import WorkScroll from '@/components/WorkScroll'
 
 const staggeredVar = {
   initial:{
@@ -65,7 +67,7 @@ function HomePage() {
   const text4 = useTransform(scrollYProgress, [2, 0], [0, 25]);
 
   return (
-    <main className='h-screen w-screen'>
+    <main id='home' className='h-screen w-screen'>
         <Navbar />
         <section className='h-[80%] w-full relative'>
           <div className='h-full w-full bg-[url("./topography.svg")] bg-cover  opacity-5 absolute z-[0]'/>
@@ -164,24 +166,39 @@ function HomePage() {
           </div>
           
         </section>
-        <section className='h-full bg-slate-100'>
-            <p className='w-[90%] mx-auto flex justify-end text-black text-[200px] pt-4'>SERVICES</p>
-            <div>
-              <div>
-
+        <section id='services' className='h-[120vh] bg-slate-100 relative'>
+        <div className='h-[120vh] w-full bg-[url("./topography.svg")] bg-cover  opacity-5 absolute z-[0]'/>
+            <p className='w-[60%] mx-auto flex justify-end text-black text-[200px] pt-12'>SERVICES</p>
+            <div className='w-[60%] h-[50%] mx-auto flex justify-between text-black  mt-[50px]'>
+              <div className='flex flex-col text-4xl gap-y-8'>
+                <BookButton />
+                What's our offers?
               </div>
-              <div>
-                
+              <div className='w-[50%] flex flex-col items-end font-[Oswald]'>
+                <div className='w-full flex flex-col gap-y-4 border-y'>
+                  <h3 className='text-2xl mt-4'>Web Design</h3>
+                  <p className='text-md text-[#7D7C7C] mb-4'>Transform your online space with our bespoke Web Design services. At Guillaume Dev, we don't just build websites; we craft digital experiences tailored to embody your brand's identity and ethos. Our design philosophy intertwines simplicity with elegance, creating intuitive and captivating interfaces that hold visitors' attention and guide them with ease. </p>
+                </div>
+                <div className='w-full flex flex-col gap-y-4'>
+                  <h3 className='text-2xl mt-4'>Development</h3>
+                  <p className='text-md text-[#7D7C7C] mb-4'>Your website's backbone is as crucial as its facade. Our Development services are all about creating a seamless, robust, and adaptive foundation for your digital presence. Our developers are wizards in the digital realm, equipped with the latest technologies to construct a website that's not just a treat to the eyes but also a powerhouse under the hood.</p>
+                </div>
+                <div className='w-full flex flex-col gap-y-4 border-y'>
+                  <h3 className='text-2xl mt-4'>SEO</h3>
+                  <p className='text-md text-[#7D7C7C] mb-4'>Being seen is the first step towards success in the digital world. Our SEO services are designed to put you in the spotlight. We delve deep into keyword research, on-page optimization, and quality link building to ensure that your website doesn't just reach the top of the search results but also commands the attention it deserves. </p>
+                </div>
               </div>
             </div>
         </section>
 
-        <section className='h-full bg-white'>
-            <p className='w-[90%] mx-auto text-black text-[300px] pt-4'>WORK</p>
+        <section id='projects' className=' bg-white'>
+            <p className='w-[60%] mx-auto text-black text-[300px] pt-12 ml-[10%] relative  bg-white'>WORK</p>
+            <WorkScroll />
         </section>
 
-        <section className='h-full bg-white'> 
-          
+        <section id='contact' className='h-full bg-white'> 
+        <div className='h-[100vh] w-full bg-[url("./topography.svg")] bg-cover  opacity-5 absolute z-[0]'/>
+        <p className='w-[60%] mx-auto flex justify-end text-black text-[100px] pt-12'>Let's talk</p>
         </section>
         <footer className='h-[25%] bg-[#364044] text-[#404C51]'>
             <p className='h-full w-[95%] mx-auto flex items-center text-[150px]'>footer</p>
