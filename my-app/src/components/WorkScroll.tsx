@@ -28,7 +28,7 @@ function WorkScroll() {
     return (
       <div
         key={card.id}
-        className="h-[50vh] w-[50vh] overflow-hidden text-black cursor-pointer transition-transform hover:-translate-y-2"
+        className="h-[50vh] w-[50vh] overflow-hidden text-black cursor-pointer transition-transform ease-in-out hover:-translate-y-2 hover:bg-slate-50"
       >
         <div
           style={{
@@ -36,10 +36,10 @@ function WorkScroll() {
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
-          className="h-[60%] rounded-xl"
+          className="h-[60%] "
         ></div>
-        <div className="flex flex-col gap-y-2 mt-2 font-[Oswald]">
-            <span className="border w-fit py-1 px-2 text-[#FFA41B] border-[#FFA41B] rounded-md">Category</span>
+        <div className="flex flex-col gap-y-4 mt-4 font-[Oswald]">
+            <span className="border w-fit py-1 px-2 text-[#FFA41B] border-[#FFA41B] ">Category</span>
           <h3 className="text-3xl ">
             {card.title}
           </h3>

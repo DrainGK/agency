@@ -4,11 +4,11 @@ import Navbar from '@/components/Navbar'
 import React from 'react'
 import Wave from 'react-wavify'
 import { motion, useScroll, useTransform } from "framer-motion"
-import MovingText from '@/components/MovingText'
 import { useRef } from 'react'
 import { InView } from 'react-intersection-observer';
 import BookButton from '@/components/BookButton'
 import WorkScroll from '@/components/WorkScroll'
+import MeCard from '@/components/MeCard'
 
 const staggeredVar = {
   initial:{
@@ -55,16 +55,24 @@ const textVariants = {
 
 
 function HomePage() {
-  const container = useRef(null);
-  const { scrollYProgress } = useScroll({
-      target: container,
-      offset: ['start end', 'end start' ]
-  })
+  const projectsContainer = useRef(null);
+  const contactContainer = useRef(null);
 
-  const text1 = useTransform(scrollYProgress, [0.1, 0], [0, 25]);
-  const text2 = useTransform(scrollYProgress, [0.1, 0], [0, 25]);
-  const text3 = useTransform(scrollYProgress, [1, 0], [0, 25]);
-  const text4 = useTransform(scrollYProgress, [2, 0], [0, 25]);
+  // Scroll progress for the projects section
+  const { scrollYProgress: projectsScrollYProgress } = useScroll({
+    target: projectsContainer,
+    offset: ['end start', 'start end'],
+  });
+
+  // Scroll progress for the contact section
+  const { scrollYProgress: contactScrollYProgress } = useScroll({
+    target: contactContainer,
+    offset: ['end start', 'start end'],
+  });
+
+  // Parallax effects for each section
+  const projectsParallax = useTransform(projectsScrollYProgress, [0, 1], [-250, 300]);
+  const contactParallax = useTransform(contactScrollYProgress, [0, 1], [-50, 100]);
 
   return (
     <main id='home' className='h-screen w-screen'>
@@ -191,17 +199,31 @@ function HomePage() {
             </div>
         </section>
 
-        <section id='projects' className=' bg-white'>
-            <p className='w-[60%] mx-auto text-black text-[300px] pt-12 ml-[10%] relative  bg-white'>WORK</p>
+        <section ref={projectsContainer} id='projects' className=' bg-white'>
+          <div className="overflow-hidden h-fit">
+            <motion.p style={{y: projectsParallax}} className='w-[60%] mx-auto text-black text-[300px] ml-[10%]'>WORK</motion.p>
+          </div>
             <WorkScroll />
         </section>
 
-        <section id='contact' className='h-full bg-white'> 
-        <div className='h-[100vh] w-full bg-[url("./topography.svg")] bg-cover  opacity-5 absolute z-[0]'/>
-        <p className='w-[60%] mx-auto flex justify-end text-black text-[100px] pt-12'>Let's talk</p>
+        <section ref={contactContainer}  id='contact' className='h-full bg-white'> 
+        <div className='h-[100vh] w-full bg-[url("./clouds.svg")]  opacity-5 absolute z-[0]'/>
+          <div  className="overflow-hidden">
+            <motion.p
+              style={{ y: contactParallax }}
+              className='w-[60%] mx-auto flex justify-end text-black text-[100px] pt-12'>
+              Let's talk
+            </motion.p>
+          </div>
+          <div className="h-full w-[60%] flex justify-between mx-auto my-12">
+            <MeCard />
+            <div className="h-[67%] w-1/2 bg-black flex items-center justify-center">
+              <p className='text-white text-8xl'>FORM</p>
+            </div>
+          </div>
         </section>
-        <footer className='h-[25%] bg-[#364044] text-[#404C51]'>
-            <p className='h-full w-[95%] mx-auto flex items-center text-[150px]'>footer</p>
+        <footer className='h-[25%] bg-[#364044] text-black'>
+            <p className='h-full w-[95%] mx-auto flex items-center text-[150px] opacity-5'>footer</p>
         </footer>
     </main>
   )
