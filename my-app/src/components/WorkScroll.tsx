@@ -12,7 +12,7 @@ function WorkScroll() {
     const x = useTransform(scrollYProgress, [0, 2], ["1%", "-95%"]);
   
     return (
-      <section ref={targetRef} className="ml-[10%] relative h-[200vh] bg-white mx-auto">
+      <section ref={targetRef} className="ml-[10%] relative h-[300vh] bg-white mx-auto">
         <div className="sticky top-0 flex h-screen items-center overflow-hidden">
           <motion.div style={{ x }} className="flex gap-8">
             {cards.map((card) => {

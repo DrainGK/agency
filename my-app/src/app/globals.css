@@ -32,6 +32,10 @@
   src: url('./Oswald.ttf') format('opentype'),
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
   background-color: #404C51;

@@ -71,10 +71,12 @@ export default Navbar
           <FiMenu />
         </motion.button>
         <NavLink text="home" />
-        <NavLink text="projects" />
         <NavLink text="services" />
+        <NavLink text="projects" />
         <NavLink text="contact" />
-        <BookButton />
+        <div className='hidden md:block'>
+          <BookButton />
+        </div>
       </div>
     );
   };
@@ -104,9 +106,12 @@ export default Navbar
         animate={isOpen ? "open" : "closed"}
         className="absolute p-4 shadow-lg left-0 right-0 top-full origin-top flex flex-col gap-4 bg-[#404C51]"
       >
+        <div className='w-full flex justify-end visible md:hidden'>
+          <BookButton />
+        </div>
         <MenuLink text="home" />
-        <MenuLink text="projects" />
         <MenuLink text="services" />
+        <MenuLink text="projects" />
         <MenuLink text="contact" />
       </motion.div>
     );
@@ -117,7 +122,7 @@ export default Navbar
       <motion.a
         variants={menuLinkVariants}
         rel="nofollow"
-        href="#"
+        href={`#${text}`}
         className="h-[30px] overflow-hidden font-medium text-lg flex items-start gap-2"
       >
         <motion.span variants={menuLinkArrowVariants}>

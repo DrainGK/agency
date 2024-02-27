@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 
 const BookButton = () => {
@@ -20,7 +21,7 @@ const BookButton = () => {
         hover:before:translate-y-[0%]
         active:scale-95`}
     >
-      <span>+ Become a client</span>
+      <Link href="/Contact">+ Become a client</Link>
     </button>
   )
 };
